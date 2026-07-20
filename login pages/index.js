@@ -107,7 +107,7 @@ function login() {
 
     if(username === "admin" && password === "123456"){
 
-        window.location.href = "dashboard.html";
+        window.location.href = "../dashboard.html";
 
     }
 
