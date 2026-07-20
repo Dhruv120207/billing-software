@@ -1,28 +1,32 @@
-// SHOW PASSWORD
+// ==========================
+// SHOW / HIDE PASSWORD
+// ==========================
 
-let password = document.getElementById("password");
-let button = document.getElementById("showPassword");
+let passwordInput = document.getElementById("password");
+let showPasswordBtn = document.getElementById("showPassword");
 
-button.onclick = function () {
+showPasswordBtn.onclick = function () {
 
-    if (password.type === "password") {
+    if (passwordInput.type === "password") {
 
-        password.type = "text";
-        button.innerText = "Hide";
+        passwordInput.type = "text";
+        showPasswordBtn.innerText = "Hide";
 
     } else {
 
-        password.type = "password";
-        button.innerText = "Show";
+        passwordInput.type = "password";
+        showPasswordBtn.innerText = "Show";
 
     }
 
 };
 
 
+// ==========================
 // CAPS LOCK WARNING
+// ==========================
 
-password.addEventListener("keyup", function (e) {
+passwordInput.addEventListener("keyup", function (e) {
 
     let warning = document.getElementById("capsWarning");
 
@@ -39,25 +43,36 @@ password.addEventListener("keyup", function (e) {
 });
 
 
-
+// ==========================
 // LOGIN FUNCTION
+// ==========================
 
 function login() {
 
     let username = document.getElementById("username").value.trim();
-    let passwordValue = document.getElementById("password").value;
+    let password = document.getElementById("password").value;
 
-    if (username === "admin" && passwordValue === "123456") {
+    let loginText = document.getElementById("loginText");
+    let loading = document.getElementById("loading");
 
-        let text = document.getElementById("loginText");
-        let loading = document.getElementById("loading");
 
-        text.classList.add("hidden");
+    // CHANGE USERNAME & PASSWORD HERE
+
+    if (username === "admin" && password === "123456") {
+
+        // SHOW LOADING
+
+        loginText.classList.add("hidden");
         loading.classList.remove("hidden");
+
+
+        // WAIT FOR 2 SECONDS
 
         setTimeout(function () {
 
-            window.location.href = "../dashboard.html";
+            // OPEN DASHBOARD
+
+            window.location.href = "dashboard.html";
 
         }, 2000);
 
@@ -72,8 +87,9 @@ function login() {
 }
 
 
-
+// ==========================
 // LOGIN BUTTON
+// ==========================
 
 let loginButton = document.getElementById("loginBtn");
 
@@ -84,7 +100,9 @@ loginButton.onclick = function () {
 };
 
 
-// ENTER BUTTON SUPPORT
+// ==========================
+// ENTER KEY SUPPORT
+// ==========================
 
 document.addEventListener("keydown", function (event) {
 
